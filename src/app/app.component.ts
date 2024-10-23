@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bases';
+
+  public titulo: string = 'Primer ejemplo de Angular';
+  public contador: number = 5;
+
+  modificar ( valor: number ):void {
+    this.contador+=valor;
+  }
+
+  resetearContador():void {
+    this.contador=5;
+  }
+
 }

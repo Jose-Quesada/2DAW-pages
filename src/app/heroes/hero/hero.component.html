@@ -1,0 +1,64 @@
+<h1> {{name}} </h1>
+
+<dl>
+  <td>Nombre:</td>
+  <dd>{{name}} </dd>
+
+  <td>Edad:</td>
+  <dd>{{age}} </dd>
+
+  <td>Método:</td>
+  <dd> {{ getHeroDescription() }}</dd>
+
+  <td>Capitalizado:</td>
+  <dd>{{ capitalizedName }}</dd>
+</dl>
+
+<button
+  *ngIf = "name !=='martosman'"
+  (click)="changeHero()" class="btn btn-primary mx-2">
+  Cambiar nombre
+</button>
+
+<button
+  *ngIf = "age !== 18"
+  (click)="changeAge()" class="btn btn-primary mx-2">
+  Cambiar edad
+</button>
+
+<button
+  (click)="resetForm()" class="btn btn-primary">
+  Reset
+</button>
+
+<!-- <p>Listado de Héroes</p>
+<ul class="mt-2 list-group">
+  <li class="list-group-item"> Spiderman</li>
+  <li class="list-group-item"> Ironman</li>
+  <li class="list-group-item"> Martosman</li>
+  <li class="list-group-item"> Hulk</li>
+</ul> -->
+
+<hr>
+
+
+<p>Listado de Héroes</p>
+<button
+  *ngIf = "heroeName.length>0"
+  (click)="removeLastHero()"
+  class="btn btn-outline-danger"
+>Borrar último héroe</button>
+
+<ng-template #nothingWasChanged>
+  <h3 >No ha borrado nada.</h3>
+</ng-template>
+
+
+<div *ngIf="deletedHero; else nothingWasChanged">
+  <h3>Héroe borrado <small class="text-danger"> {{ deletedHero }}</small></h3>
+</div>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroeName"
+  class="list-group-item"> {{name}} </li>
+</ul>
